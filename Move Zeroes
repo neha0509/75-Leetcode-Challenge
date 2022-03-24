@@ -1,0 +1,30 @@
+public class Solution {
+    public void MoveZeroes(int[] nums) {
+        int len = nums.Length;
+        int zeroptr = 0;
+        int nonzeroptr = 0;
+        while(nonzeroptr < len)
+        {
+            if(nums[nonzeroptr] == 0)
+            {
+                nonzeroptr++;
+            }
+            else 
+            {
+                if(zeroptr == nonzeroptr)
+                {
+                    zeroptr++;
+                    nonzeroptr++;
+                }
+                else
+                {
+                    nums[zeroptr] = nums[nonzeroptr];
+                    nums[nonzeroptr] = 0;
+                    zeroptr++;
+                    nonzeroptr++;
+                }
+            }
+        }
+        
+    }
+}
