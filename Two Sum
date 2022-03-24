@@ -1,0 +1,15 @@
+public class Solution {
+    public int[] TwoSum(int[] nums, int target) {
+        var dict = new Dictionary<int, int>();
+        for (int i = 0; i < nums.Length; i++)
+        {
+            int d = target - nums[i];
+            if (dict.ContainsKey(d)) 
+                return new [] {dict[d], i};
+            
+            dict[nums[i]] = i;
+        }
+        
+        return null;
+    }
+}
