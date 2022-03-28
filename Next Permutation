@@ -1,0 +1,49 @@
+public class Solution {
+    static void swap(ref int x, ref int y)
+    {
+
+        int temp = x;
+        x = y;
+        y = temp;
+    }
+    public void reverse(int s, int e, int[] nums)
+    {
+        
+        while(s < e)
+        {
+            swap(ref nums[s],ref nums[e]);
+            s++;
+            e--;
+        }
+    }
+    public void NextPermutation(int[] nums) {
+        int n = nums.Length;
+        if(n <= 1)
+        {
+            return;
+        }
+        int i = n-2;
+        while(i >= 0)
+        {
+            if(nums[i+1] > nums[i])
+            {
+                break;
+            }
+            i--;
+        }
+        //nums[i] ->smallest element < nums[i+1]
+        if(i >= 0)
+        {
+           
+            int j =n-1;
+            
+            // To find the elem just greater than nums[i]
+            while(nums[j] <= nums[i])
+            {
+                j--;
+            }
+            swap(ref nums[i],ref nums[j]);       
+        }        
+        reverse(i+1,n-1,nums);        
+    }
+}
