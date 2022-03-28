@@ -1,0 +1,49 @@
+public class Solution {
+    public IList<IList<int>> ThreeSum(int[] nums) {
+        var ans = new List<IList<int>>();        
+        Array.Sort(nums);
+        int n = nums.Length;
+        for (int i = 0; i < n; i++) 
+        {
+            // Skip duplicates
+            if (i != 0 && nums[i] == nums[i- 1]) {
+                continue;
+            }
+            var num = -1 * nums[i];            
+            var start = i + 1;
+            var end = n - 1;            
+            while (start < end) 
+            {               
+                var sum = nums[start] + nums[end];
+
+                if (sum == num) 
+                {
+                    var value1 = nums[start];
+                    var value2 = nums[end];                
+                    ans.Add(new List<int>{nums[i], value1, value2});
+
+                    while (start < end && value1 == nums[start]) 
+                    {
+                        start++;
+                    }
+                    while (start < end && value2 == nums[end - 1]) 
+                    {
+                        end--;
+                    }
+                
+                } 
+                else if (sum < num) {
+                    start++;
+                
+                } 
+                else 
+                {
+                    end--;
+                }                         
+            }            
+        }
+        
+        return ans;
+    }
+}
+
