@@ -1,0 +1,13 @@
+public class Solution {
+    public int MaxProfit(int[] prices) {
+        int profit = 0;
+        int n = prices.Length;
+        for(int i = 0; i < n-1; i++) 
+        {
+            profit += Math.Max(0, prices[i+1]-prices[i]);
+        }
+        return profit;
+    }
+}
+
+// The idea is to buy today and sell tomorrow, this we will do for every day.
