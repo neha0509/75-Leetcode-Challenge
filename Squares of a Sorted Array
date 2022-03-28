@@ -1,0 +1,21 @@
+public class Solution {
+    public int[] SortedSquares(int[] nums) {
+        int[] sq = new int[nums.Length];
+        int k = nums.Length - 1;
+        int i=0,j=k;
+        while(i<=j)
+        {
+            if(nums[i] * nums[i] > nums[j]* nums[j])
+            {
+                sq[k--] = nums[i] * nums[i];
+                i++;
+            }
+            else
+            {
+                sq[k--] = nums[j] * nums[j];
+                j--;
+            }
+        }
+        return sq;
+    }
+}
