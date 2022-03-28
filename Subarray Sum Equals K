@@ -1,0 +1,27 @@
+public class Solution {
+    public int SubarraySum(int[] nums, int k) {
+        
+        Dictionary<int, int> d = new Dictionary<int, int>();         
+        int count = 0;
+        int sum = 0;
+        for (int i = 0; i < nums.Length; i++)
+        {
+            sum += nums[i];
+            if (sum == k) 
+                count++;
+
+            if (d.ContainsKey(sum - k))
+                count += d[sum - k];
+
+            if (!d.ContainsKey(sum))
+            {
+                d.Add(sum, 1);
+            }
+            else
+            {
+                d[sum] = d[sum] + 1;
+            }
+        }
+        return count; 
+    }
+}
