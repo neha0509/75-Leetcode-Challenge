@@ -1,0 +1,32 @@
+public class Solution {
+    public IList<IList<int>> Generate(int numRows) {
+        IList<IList<int>> ans = new List<IList<int>>();
+        List<int> t = new List<int>();
+        t.Add(1);
+        ans.Add(t);
+        if(numRows == 1)
+        {
+            return ans;
+        }  
+        List<int> t1 = new List<int>();
+        t1.Add(1);
+        t1.Add(1);
+        ans.Add(t1);
+        if(numRows == 2)
+        {            
+            return ans;
+        }
+        for(int i=2;i<numRows;i++)
+        {
+            List<int> t2 = new List<int>();
+            t2.Add(1);
+            for(int j=1;j<ans[i-1].Count;j++)
+            {
+                t2.Add(ans[i-1][j-1] + ans[i-1][j]);
+            }
+            t2.Add(1);
+            ans.Add(t2);
+        }
+        return ans;
+    }
+}
