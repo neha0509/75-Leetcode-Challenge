@@ -1,3 +1,5 @@
+// With extra Space
+
 public class Solution {
     public int PivotIndex(int[] nums) {
         int n = nums.Length;
@@ -18,6 +20,34 @@ public class Solution {
             if(prefixsum[i]==suffixsum[i])
             {
                 return i;
+            }
+        }
+        return -1;
+    }
+}
+
+
+// Without extra space
+
+public class Solution {
+    public int PivotIndex(int[] nums) {
+        int n = nums.Length;
+        int total_sum = 0;
+        for(int i=0;i<n;i++)
+        {
+            total_sum +=nums[i];
+        }
+        int left_sum = 0;
+        for(int i=0;i<n;i++)
+        {
+            if(left_sum == total_sum - nums[i])
+            {
+                return i;
+            }
+            else
+            {
+                left_sum += nums[i];
+                total_sum -= nums[i];
             }
         }
         return -1;
