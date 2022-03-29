@@ -1,0 +1,62 @@
+public class Solution {
+    public IList<int> SpiralOrder(int[][] matrix) {
+            if(matrix[0] == null)
+                return new List<int>(){0};
+            
+            int cols = matrix[0].Length;
+            int rows = matrix.Length;
+            int top = 0, bottom = rows - 1, left = 0, right = cols - 1;
+            int Counter = 0;
+
+            List<int> answers = new();
+            int dir = 1;
+            while (top <= bottom && left <= right )
+            {
+                if (dir == 1 && Counter < cols*rows)
+                {
+                    for (int i = left; i <= right; ++i)
+                    {
+                        answers.Add(matrix[top][i]);
+                        ++Counter;
+                    }
+                    ++top;
+                    dir = 2;
+                }
+
+                if (dir == 2 && Counter < cols*rows)
+                {
+                    for (int i = top; i <= bottom; ++i)
+                    {
+                        answers.Add(matrix[i][right]);
+                        ++Counter;
+                    }
+                    --right;
+                    dir = 3;
+                }
+
+                if (dir == 3 && Counter < cols*rows)
+                {
+                    for (int i = right; i >= left; i--)
+                    {
+                        answers.Add(matrix[bottom][i]);
+                        ++Counter;
+                    }
+                    --bottom;
+                    dir = 4;
+                }
+
+                if (dir == 4 && Counter < cols*rows)
+                {
+                    for (int i = bottom; i >= top; i--)
+                    {
+                        answers.Add(matrix[i][left]);
+                        ++Counter;
+                    }
+                    ++left;
+                    dir = 1;
+                }
+            }
+
+            return answers;
+    }
+}
